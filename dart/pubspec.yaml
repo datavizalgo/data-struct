@@ -1,0 +1,8 @@
+name: data_struct_dart
+description: data struct implement by dart
+environment:
+  sdk: '^3.3.0'
+
+
+dev_dependencies:
+  test: ^1.25.2
