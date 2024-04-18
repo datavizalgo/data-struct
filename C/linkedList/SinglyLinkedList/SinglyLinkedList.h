@@ -3,13 +3,13 @@
 #include <stdio.h>
 #include <malloc.h>
 
-typedef struct _SinglyLinkedListNode SinglyLinkedListNode;
+// typedef struct _SinglyLinkedListNode SinglyLinkedListNode;
 
-struct _SinglyLinkedListNode
+typedef struct _SinglyLinkedListNode
 {
     struct _SinglyLinkedListNode *next;
     int data;
-};
+} SinglyLinkedListNode;
 
 typedef struct SinglyLinkedList
 {

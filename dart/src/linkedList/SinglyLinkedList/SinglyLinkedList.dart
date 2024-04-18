@@ -2,15 +2,15 @@
  * Singly Linked List
  */
 
-class Node<T> {
+class SinglylinkedlistNode<T> {
   T data;
-  Node<T>? next = null;
+  SinglylinkedlistNode<T>? next = null;
 
-  Node(this.data);
+  SinglylinkedlistNode(this.data);
 }
 
 class SinglyLinkedList<T> {
-  Node<T>? head = null;
+  SinglylinkedlistNode<T>? head = null;
   int? length = 0;
 
   get isEmpty => this.length == 0;
@@ -18,7 +18,7 @@ class SinglyLinkedList<T> {
  * Prepend value to the head of the list
  */
   void prepend(T data) {
-    final node = Node<T>(data);
+    final node = SinglylinkedlistNode<T>(data);
     node.next = this.head;
     this.head = node;
     this.length = this.length! + 1;
@@ -29,11 +29,11 @@ class SinglyLinkedList<T> {
  *
  */
   void append(T data) {
-    final node = Node<T>(data);
+    final node = SinglylinkedlistNode<T>(data);
     if (this.head == null) {
       this.head = node;
     } else {
-      Node<T>? current = this.head;
+      SinglylinkedlistNode<T>? current = this.head;
       while (current!.next != null) {
         current = current.next;
       }
@@ -50,12 +50,12 @@ class SinglyLinkedList<T> {
     if (index < 0 || index > this.length!) {
       throw RangeError("Invalid index");
     }
-    final node = Node<T>(data);
+    final node = SinglylinkedlistNode<T>(data);
     if (index == 0) {
       node.next = this.head;
       this.head = node;
     } else {
-      Node<T>? current = this.head;
+      SinglylinkedlistNode<T>? current = this.head;
       for (int i = 0; i < index - 1; i++) {
         current = current!.next;
       }
@@ -76,7 +76,7 @@ class SinglyLinkedList<T> {
     if (index == 0) {
       this.head = this.head!.next;
     } else {
-      Node<T>? current = this.head;
+      SinglylinkedlistNode<T>? current = this.head;
       for (int i = 0; i < index - 1; i++) {
         current = current!.next;
       }
@@ -92,7 +92,7 @@ class SinglyLinkedList<T> {
     if (index < 0 || index >= this.length!) {
       throw RangeError("Invalid index");
     }
-    Node<T>? current = this.head;
+    SinglylinkedlistNode<T>? current = this.head;
     for (int i = 0; i < index; i++) {
       current = current!.next;
     }
@@ -101,7 +101,7 @@ class SinglyLinkedList<T> {
 
   List<T> toList() {
     List<T> list = [];
-    Node<T>? current = this.head;
+    SinglylinkedlistNode<T>? current = this.head;
     while (current != null) {
       list.add(current.data);
       current = current.next;
@@ -117,9 +117,9 @@ class SinglyLinkedList<T> {
     if (this.head == null) {
       return;
     }
-    Node<T>? current = this.head;
-    Node<T>? prev = null;
-    Node<T>? next = null;
+    SinglylinkedlistNode<T>? current = this.head;
+    SinglylinkedlistNode<T>? prev = null;
+    SinglylinkedlistNode<T>? next = null;
     while (current != null) {
       next = current.next;
       current.next = prev;

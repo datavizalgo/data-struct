@@ -1,6 +1,6 @@
 
 export class SinglyLinkedList<T> {
-    private head: ListNode<T> | null = null;
+    private head: SinglylinkedlistNode<T> | null = null;
     private length: number = 0
     public isEmpty(): boolean {
         return this.head === null;
@@ -15,7 +15,7 @@ export class SinglyLinkedList<T> {
      * @return {void} 
      */
     public prepend(value: T): void {
-        const newNode = new ListNode<T>(value);
+        const newNode = new SinglylinkedlistNode<T>(value);
         newNode.next = this.head;
         this.head = newNode;
         this.length++
@@ -28,7 +28,7 @@ export class SinglyLinkedList<T> {
      * @return {void} 
      */
     public append(value: T): void {
-        const newNode = new ListNode<T>(value);
+        const newNode = new SinglylinkedlistNode<T>(value);
         if (this.head === null) {
             this.head = newNode;
         } else {
@@ -52,7 +52,7 @@ export class SinglyLinkedList<T> {
         if (index < 0 || index > this.length) {
             throw new Error('Index out of bounds');
         }
-        const newNode = new ListNode<T>(value);
+        const newNode = new SinglylinkedlistNode<T>(value);
         if (index === 0) {
             newNode.next = this.head;
             this.head = newNode;
@@ -163,7 +163,7 @@ export class SinglyLinkedList<T> {
     }
 }
 
-class ListNode<T> {
-    next: ListNode<T> | null = null;
-    constructor(public value: T,) { }
+class SinglylinkedlistNode<T> {
+    next: SinglylinkedlistNode<T> | null = null;
+    constructor(public value: T) { }
 }

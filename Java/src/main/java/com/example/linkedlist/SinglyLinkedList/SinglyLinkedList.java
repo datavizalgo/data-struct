@@ -1,17 +1,17 @@
 package com.example.linkedlist.SinglyLinkedList;
 
-class Node {
+class SinglylinkedlistNode {
     int data;
-    Node next;
+    SinglylinkedlistNode next;
 
-    Node(int d) {
+    SinglylinkedlistNode(int d) {
         data = d;
         next = null;
     }
 }
 
 public class SinglyLinkedList {
-    Node head;
+    SinglylinkedlistNode head;
     private int length = 0;
 
     public SinglyLinkedList() {
@@ -25,7 +25,7 @@ public class SinglyLinkedList {
      */
     public void prepend(int value) {
         // Create a new node
-        Node node = new Node(value);
+        SinglylinkedlistNode node = new SinglylinkedlistNode(value);
 
         // Make the new node point to the current head
         node.next = head;
@@ -44,14 +44,14 @@ public class SinglyLinkedList {
      */
     public void append(int value) {
         // Create a new node
-        Node node = new Node(value);
+        SinglylinkedlistNode node = new SinglylinkedlistNode(value);
 
         // If the head is null, the new node is the head
         if (head == null) {
             head = node;
         } else {
             // Traverse to the last node
-            Node last = head;
+            SinglylinkedlistNode last = head;
             while (last.next != null) {
                 last = last.next;
             }
@@ -76,7 +76,7 @@ public class SinglyLinkedList {
             throw new IndexOutOfBoundsException("Index: " + index + " is out of bounds. Size: " + length);
         }
         // Create a new node
-        Node node = new Node(value);
+        SinglylinkedlistNode node = new SinglylinkedlistNode(value);
 
         // If the index is 0, insert the node at the head
         if (index == 0) {
@@ -85,7 +85,7 @@ public class SinglyLinkedList {
             head = node;
         } else {
             // Traverse to the node before the insertion point
-            Node temp = head;
+            SinglylinkedlistNode temp = head;
             for (int i = 0; i < index - 1; i++) {
                 temp = temp.next;
             }
@@ -114,7 +114,7 @@ public class SinglyLinkedList {
             head = head.next;
         } else {
             // Traverse to the node before the removal point
-            Node temp = head;
+            SinglylinkedlistNode temp = head;
             for (int i = 0; i < index - 1; i++) {
                 temp = temp.next;
             }
@@ -131,7 +131,7 @@ public class SinglyLinkedList {
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException("Index: " + index + " is out of bounds. Size: " + length);
         }
-        Node temp = head;
+        SinglylinkedlistNode temp = head;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
@@ -149,7 +149,7 @@ public class SinglyLinkedList {
 
     public int[] toArray() {
         int[] arr = new int[length];
-        Node temp = head;
+        SinglylinkedlistNode temp = head;
         for (int i = 0; i < length; i++) {
             arr[i] = temp.data;
             temp = temp.next;

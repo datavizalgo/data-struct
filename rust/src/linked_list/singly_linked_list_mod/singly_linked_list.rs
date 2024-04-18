@@ -4,14 +4,14 @@
  */
 
 #[derive(Debug)]
-pub struct Node {
+pub struct SinglylinkedlistNode {
     data: i32,
-    next: Option<Box<Node>>,
+    next: Option<Box<SinglylinkedlistNode>>,
 }
 
 #[derive(Debug)]
 pub struct SinglyLinkedList {
-    head: Option<Box<Node>>,
+    head: Option<Box<SinglylinkedlistNode>>,
     length: i32,
 }
 
@@ -28,7 +28,7 @@ impl SinglyLinkedList {
      */
 
     pub fn prepend(&mut self, data: i32) {
-        let new_node = Node {
+        let new_node = SinglylinkedlistNode {
             data,
             next: self.head.take(),
         };
@@ -41,13 +41,17 @@ impl SinglyLinkedList {
      *
      */
     pub fn append(&mut self, data: i32) {
-        let new_node = Node { data, next: None };
-        let mut current = &mut self.head;
+        let new_node = SinglylinkedlistNode { data, next: None };
 
-        while let Some(node) = current {
-            current = &mut node.next;
+        if self.head.is_none() {
+            self.head = Some(Box::new(new_node));
+        } else {
+            let mut current = &mut self.head;
+            while let Some(node) = current {
+                    current = &mut node.next;
+            }
+            current.replace(Box::new(new_node));
         }
-        *current = Some(Box::new(new_node));
         self.length += 1;
     }
     /**
@@ -59,7 +63,7 @@ impl SinglyLinkedList {
         if index > self.length || index < 0 {
             panic!("Index out of bounds");
         }
-        let mut new_node = Node { data, next: None };
+        let mut new_node = SinglylinkedlistNode { data, next: None };
 
         if index == 0 {
             new_node.next = self.head.take();
@@ -69,10 +73,7 @@ impl SinglyLinkedList {
             let mut count = 0;
             while let Some(node) = current {
                 if count == index - 1 {
-                    let new_node = Node {
-                        data,
-                        next: node.next.take(),
-                    };
+                    new_node.next = node.next.take();
                     node.next = Some(Box::new(new_node));
                     break;
                 }
@@ -191,8 +192,6 @@ mod tests {
         assert_eq!(list.pop(), None);
     }
 
-  
-
     #[test]
     fn test_insert_at() {
         let mut list = SinglyLinkedList::new();
@@ -242,7 +241,7 @@ mod tests {
         assert_eq!(list.into_vec(), vec![3, 4, 5, 6]);
         list.remove_at(3);
         assert_eq!(list.into_vec(), vec![3, 4, 5]);
-    }   
+    }
 
     #[test]
     fn test_append() {
