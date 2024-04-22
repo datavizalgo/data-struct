@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import '../../src/linkedList/SinglyLinkedList/SinglyLinkedList.dart';
+
 void main() {
   test('SinglyLinkedList is empty', () {
     var list = SinglyLinkedList<int>();

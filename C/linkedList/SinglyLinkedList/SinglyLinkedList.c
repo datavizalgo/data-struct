@@ -67,11 +67,13 @@ void insertAt(SinglyLinkedList *list, SinglyLinkedListNode *node, int index)
 }
 
 // 删除指定位置
-void removeAt(SinglyLinkedList *list, int index)
+void deleteAt(SinglyLinkedList *list, int index)
 {
-    assert(index >= 0 || index <= list->length);
+    assert(index >= 0 || index < list->length);
+    SinglyLinkedListNode *temp;
     if (index == 0)
     {
+        temp = list->head;
         list->head = list->head->next;
     }
     else
@@ -81,14 +83,15 @@ void removeAt(SinglyLinkedList *list, int index)
         {
             currentNode = currentNode->next;
         }
-        SinglyLinkedListNode *temp = currentNode->next;
+        temp = currentNode->next;
         currentNode->next = currentNode->next->next;
-        free(temp);
     }
+    temp->next = NULL;
+    free(temp);
     list->length--;
 }
 // 删除指定值
-void removeValue(SinglyLinkedList *list, int value)
+void deleteValue(SinglyLinkedList *list, int value)
 {
     SinglyLinkedListNode *currentNode = list->head;
     SinglyLinkedListNode *previousNode = NULL;

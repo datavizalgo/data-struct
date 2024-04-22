@@ -18,11 +18,11 @@ int main()
     printList(list);
     insertAt(list, createNode(8), 7);
     printList(list);
-    removeAt(list, 1);
+    deleteAt(list, 1);
     printList(list);
-    removeAt(list,6);
+    deleteAt(list,6);
     printList(list);
-    removeValue(list, 6);
+    deleteValue(list, 6);
     printList(list);
     printf("length: %d\n", list->length);
     clear(list);

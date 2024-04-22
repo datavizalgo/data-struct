@@ -27,9 +27,9 @@ void append(SinglyLinkedList *list, SinglyLinkedListNode *node);
 // 插入到指定位置
 void insertAt(SinglyLinkedList *list, SinglyLinkedListNode *node, int index);
 // 删除指定位置
-void removeAt(SinglyLinkedList *list, int index);
+void deleteAt(SinglyLinkedList *list, int index);
 // 删除指定值
-void removeValue(SinglyLinkedList *list, int value);
+void deleteValue(SinglyLinkedList *list, int value);
 // 查找指定位置值
 int findAt(SinglyLinkedList *list, int indedx);
 
