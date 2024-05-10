@@ -1,0 +1,3 @@
+project(binarySearchTree)
+
+add_executable(binarySearchTree main.c)
