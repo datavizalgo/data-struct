@@ -1,0 +1,3 @@
+project(rbtree)
+
+add_executable(rbtree main.c)

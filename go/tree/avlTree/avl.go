@@ -132,6 +132,7 @@ func (t *AVLTree) Insert(node *AVLNode, data int) *AVLNode {
 	return node
 }
 
+
 func (t *AVLTree) Delete(node *AVLNode, data int) *AVLNode {
 	if node == nil {
 		return nil
