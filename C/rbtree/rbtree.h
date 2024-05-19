@@ -144,7 +144,7 @@ rbtree_node *findNode(rbtree *tree, int data)
 {
     rbtree_node *current = tree->root;
 
-    while (current != NULL)
+    while (current != tree->nil)
     {
         if (current->data == data)
         {
@@ -229,9 +229,7 @@ void rbtree_insert(rbtree *t, int data)
         return;
     rbtree_node *new_node = rbtree_create_node(data);
     new_node->left = new_node->right = new_node->parent = t->nil;
-    printf("insert %d\n", data);
     t->root = rbtree_node_insert(t->root, new_node, t->nil, t->nil);
-    printf("insert %d\n", data);
     rbtree_insert_fixup(t, new_node);
 }
 
@@ -353,6 +351,7 @@ void rbtree_delete(rbtree *t, int data)
         /* code */
         child = delNode->right;
         rbtree_transplant(t, delNode, delNode->right);
+
     }
     else if (delNode->right == t->nil)
     {
@@ -383,6 +382,8 @@ void rbtree_delete(rbtree *t, int data)
     {
         rbtree_delete_fixup(t, child);
     }
+
+    free(delNode);
 }
 
 void rbtree_delete_fixup(rbtree *t, rbtree_node *node)
