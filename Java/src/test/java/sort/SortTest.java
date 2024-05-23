@@ -1,0 +1,33 @@
+package sort;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import com.example.sort.InsertionSort;
+import com.example.sort.SelectionSort;
+import com.example.sort.SortUtil;
+
+public class SortTest {
+
+    @Test
+    public void testSelectionSort() {
+        int[] array = SortUtil.randomArray(200, 1, 10000);
+        SelectionSort.sort(array);
+        assertEquals(true, SortUtil.isAscArray(array));
+    }
+
+    @Test 
+    public void testInsertionSort() {
+        int[] array = SortUtil.randomArray(200, 1, 10000);
+        InsertionSort.sort(array);
+        assertEquals(true, SortUtil.isAscArray(array));
+    }
+
+    @Test
+    public void testInsertionSortDesc() {
+        int[] array = SortUtil.randomArray(200, 1, 10000);
+        InsertionSort.sortDesc(array);
+        assertEquals(true, SortUtil.isDescArray(array));
+    }
+}

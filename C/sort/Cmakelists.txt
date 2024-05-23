@@ -1,0 +1,4 @@
+project(sort)
+
+
+add_executable(sort insertion.c)

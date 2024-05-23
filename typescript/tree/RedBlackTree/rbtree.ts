@@ -48,7 +48,6 @@ export class RBTree {
 
     private insertFixup(node: RBNode) {
         // 当node.parent的颜色为黑色时或者node是根节点时（因为node为根节点是只有可能违反第二条性质，但在代码最后有将根节点标记为黑色）终止循环
-
         while (node !== this.root && node.parent!.color === Color.Red) {
             // 如果node的父节点是左子节点
             if (node.parent === node.parent!.parent!.left) {
@@ -147,7 +146,7 @@ export class RBTree {
         return null;
     }
     findMin(node: RBNode | null): RBNode | null {
-        while (node && node !== this.nil) {
+        while (node && node.left !== this.nil) {
             node = node.left;
         }
         return node;
@@ -175,9 +174,9 @@ export class RBTree {
                 minNode.right = deleteNode.right;
                 minNode.right!.parent = minNode;
             }
-            this.transplant(minNode, minNode.right);
-            minNode.right = deleteNode.right;
-            minNode.right!.parent = minNode;
+            this.transplant(deleteNode,minNode);
+            minNode.left = deleteNode.left;
+            minNode.left!.parent = minNode;
             minNode.color = deleteNode.color;
         }
 
