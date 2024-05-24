@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import com.example.sort.InsertionSort;
+import com.example.sort.QuickSort;
 import com.example.sort.SelectionSort;
 import com.example.sort.SortUtil;
 
@@ -17,7 +18,7 @@ public class SortTest {
         assertEquals(true, SortUtil.isAscArray(array));
     }
 
-    @Test 
+    @Test
     public void testInsertionSort() {
         int[] array = SortUtil.randomArray(200, 1, 10000);
         InsertionSort.sort(array);
@@ -29,5 +30,12 @@ public class SortTest {
         int[] array = SortUtil.randomArray(200, 1, 10000);
         InsertionSort.sortDesc(array);
         assertEquals(true, SortUtil.isDescArray(array));
+    }
+
+    @Test
+    public void testQuickSort() {
+        int[] array = SortUtil.randomArray(200, 1, 10000);
+        QuickSort.quickSort(array, 0, array.length - 1);
+        assertEquals(true, SortUtil.isAscArray(array));
     }
 }

@@ -45,10 +45,11 @@ void swap(int *a, int *b)
 
 void printArr(int arr[], int n, char *str)
 {
-    printf("%s: ", str);
-    int i;
-    for (i = 0; i < n; i++)
+    printf("%s => size:%d : ", str,n);
+    for (int i = 0; i < n; i++){
+
         printf("%d ", arr[i]);
+    }
     printf("\n------------------------------\n");
 }
 

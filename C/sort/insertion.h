@@ -1,10 +1,10 @@
 
 #include "sort.h"
 // insertion sort 插入排序
-void insertionSort(int arr[], int n)
+void insertionSort(int arr[], int length)
 {
     int i, key, j;
-    for (i = 1; i < n; i++)
+    for (i = 1; i < length; i++)
     {
         key = arr[i];
         j = i - 1;

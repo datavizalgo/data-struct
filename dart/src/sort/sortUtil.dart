@@ -37,8 +37,11 @@ bool isDescArray(List list) {
   return true;
 }
 
+/**
+ * 交换数组的元素
+ */
 void swap(List list, int i, int j) {
-  int temp = list[i];
+  dynamic temp = list[i];
   list[i] = list[j];
   list[j] = temp;
 }
