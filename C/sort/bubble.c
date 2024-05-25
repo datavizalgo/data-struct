@@ -17,6 +17,9 @@ int main(int argc, char const *argv[])
     printArr(arr2, size, "排序前:");
     bubbleSort2(arr2, size);
     printArr(arr2, size, "排序后:");
+
+    free(arr);
+    free(arr2);
     /* code */
     return 0;
 }

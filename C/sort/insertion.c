@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
     printArr(arr, 20, "排序前:");
     insertionSort(arr, 20);
     printArr(arr, 20, "排序后:");
-
+    free(arr);
     /* code */
     return 0;
 }

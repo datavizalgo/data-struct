@@ -45,3 +45,29 @@ func getMedianOfThree(arr []int, low int, high int) int {
 	}
 	return high
 }
+
+// 快速排序 另一种实现
+func QuickSort1(arr []int, low int, high int) {
+	if low < high {
+		pivot := partition1(arr, low, high)
+		QuickSort1(arr, low, pivot-1)
+		QuickSort1(arr, pivot+1, high)
+	}
+}
+
+func partition1(arr []int, low int, high int) int {
+	// 获取基准值
+	pivot := getMedianOfThree(arr, low, high)
+	// 将基准值交换到数组末尾
+	Swap(arr, pivot, high)
+	i := low - 1
+
+	for j := low; j < high; j++ {
+		if arr[j] <= arr[high] {
+			i++
+			Swap(arr, i, j)
+		}
+	}
+	Swap(arr, i+1, high)
+	return i + 1
+}

@@ -3,7 +3,8 @@ import { isAscArray, isDescArray, randomArray } from "./sortUtils"
 import { bubbleSort, bubbleSort2 } from "./bubbleSort"
 import { selectionSort } from "./selectionSort"
 import { insertionSort, insertionSortDesc } from "./insertionSort"
-import { getMedianOfThree, quickSort, quickSort2 } from "./quickSort"
+import { getMedianOfThree, quickSort, quickSort2, quickSort3 } from "./quickSort"
+import { mergeSort } from "./mergeSort"
 
 describe("sorts", () => {
     it("bubble sorted", () => {
@@ -63,10 +64,20 @@ describe("sorts", () => {
 
     it("test quickSort2", () => {
         const arr = randomArray(25, 1, 500)
-        console.log(arr)
         quickSort2(arr)
-        console.log(arr)
         expect(isDescArray(arr)).toBe(true)  
+    })
+
+    it("test quickSort3", () => {
+        const arr = randomArray(500, 1, 50000)
+        quickSort3(arr)
+        expect(isAscArray(arr)).toBe(true)
+    })
+
+    it("test mergeSort", () => {
+        const arr = randomArray(500, 1, 50000)
+        mergeSort(arr)
+        expect(isAscArray(arr)).toBe(true)
     })
 })
 

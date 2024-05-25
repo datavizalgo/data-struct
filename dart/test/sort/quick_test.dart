@@ -23,4 +23,10 @@ void main() {
 
     expect((4 + 3) >> 1, 3);
   });
+
+  test("quick sort4", () {
+    List<int> list = randomList(20, 2000);
+    quickSort2(list, 0, list.length - 1);
+    expect(isAscArray(list), true);
+  });
 }

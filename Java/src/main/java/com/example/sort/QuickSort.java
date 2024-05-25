@@ -47,4 +47,26 @@ public class QuickSort {
         return low;
 
     }
+
+    static public void quickSort1(int[] a, int low, int high) {
+        if (low < high) {
+            int pivot = partition1(a, low, high);
+            quickSort1(a, low, pivot - 1);
+            quickSort1(a, pivot + 1, high);
+        }
+    }
+
+    static public int partition1(int[] a, int low, int high) {
+        int pivot = getMedianOfThree(a, low, high);
+        SortUtil.swap(a, high, pivot);
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (a[j] <= a[high]) {
+                i++;
+                SortUtil.swap(a, i, j);
+            }
+        }
+        SortUtil.swap(a, i + 1, high);
+        return i + 1;
+    }
 }

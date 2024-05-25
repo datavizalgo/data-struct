@@ -3,7 +3,9 @@
 int partition(int arr[], int low, int high);
 int getMedianOfThree(int arr[], int low, int high);
 void quickSort(int arr[], int low, int high);
-
+// 快速排序
+void quickSort2(int arr[], int low, int high);
+int partition2(int arr[], int low, int high);
 // 快速排序
 void quickSort(int arr[], int low, int high)
 {
@@ -52,4 +54,33 @@ int getMedianOfThree(int arr[], int low, int high)
         return low;
     }
     return high;
+}
+
+
+void quickSort2(int arr[], int low, int high)
+{
+    if (low < high)
+    {
+        int pivot = partition2(arr, low, high);
+        quickSort2(arr, low, pivot - 1);
+        quickSort2(arr, pivot + 1, high);
+    }
+}
+
+int partition2(int arr[], int low, int high)
+{
+    int pivot = getMedianOfThree(arr, low, high);
+    swap(&arr[high], &arr[pivot]);
+
+    int i = low-1;
+    for (int j = low; j < high; j++)
+    {
+        if (arr[j] <= arr[high])
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i+1], &arr[high]);
+    return i+1;
 }

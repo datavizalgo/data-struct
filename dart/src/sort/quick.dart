@@ -43,3 +43,27 @@ int getMedianOfThree(List<int> arr, int low, int high) {
   }
   return high;
 }
+
+void quickSort2(List<int> list, int low, int high) {
+  if (low < high) {
+    int pivot = partition2(list, low, high);
+    quickSort2(list, low, pivot - 1);
+    quickSort2(list, pivot + 1, high);
+  }
+}
+
+int partition2(List<int> arr, int low, int high) {
+  int pivot = getMedianOfThree(arr, low, high);
+  swap(arr, pivot, high);
+  int i = low - 1;
+
+  for (var j = low; j < high; j++) {
+    if (arr[j] <= arr[high]) {
+      i++;
+      swap(arr, i, j);
+    }
+  }
+
+  swap(arr, i + 1, high);
+  return i + 1;
+}

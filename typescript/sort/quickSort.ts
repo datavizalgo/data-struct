@@ -83,3 +83,27 @@ export function quickSort2(arr: number[], low: number = 0, high: number = arr.le
         quickSort2(arr, right + 1, high)
     }
 }
+
+
+
+export function quickSort3(arr: number[], low: number = 0, high: number = arr.length - 1) {
+    if (low < high) {
+        const pivot = partition2(arr, low, high)
+        quickSort3(arr, low, pivot - 1)
+        quickSort3(arr, pivot + 1, high)
+    }
+}
+
+export function partition2(arr: number[], low: number, high: number) {
+    const pivot = getMedianOfThree(arr, low, high)
+    swap(arr, high, pivot)
+    let i = low - 1
+    for (let j = low; j < high; j++) {
+        if (arr[j] <= arr[high]) {
+            i++
+            swap(arr, i, j)
+        }
+    }
+    swap(arr, i + 1, high)
+    return i + 1
+}

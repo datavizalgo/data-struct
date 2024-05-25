@@ -40,7 +40,7 @@ func TestInsertionSortDesc(t *testing.T) {
 }
 
 func TestQuickSort(t *testing.T) {
-	arr := RandomArray(1000, 0, 10000)
+	arr := RandomArray(9000000, 0, 90000000)
 	assert.Equal(t, false, IsAscArray(arr))
 	QuickSort(arr, 0, len(arr)-1)
 	assert.Equal(t, true, IsAscArray(arr))
@@ -62,4 +62,19 @@ func TestGetMedianOfThree(t *testing.T) {
 	arr = []int{77, 88, 77}
 	median = getMedianOfThree(arr, 0, len(arr)-1)
 	assert.Equal(t, 0, median)
+}
+
+func TestQuickSort1(t *testing.T) {
+	arr := RandomArray(9000000, 0, 90000000)
+	assert.Equal(t, false, IsAscArray(arr))
+	QuickSort1(arr, 0, len(arr)-1)
+	assert.Equal(t, true, IsAscArray(arr))
+}
+
+func TestMergeSort(t *testing.T) {
+	const size = 1000
+	arr := RandomArray(size, 0, 10000)
+	assert.Equal(t, false, IsAscArray(arr))
+	MergeSort(arr, make([]int, size), 0, size-1)
+	assert.Equal(t, true, IsAscArray(arr))
 }

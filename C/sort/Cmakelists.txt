@@ -1,4 +1,4 @@
 project(sort)
 
 
-add_executable(sort quick.c)
+add_executable(sort merge.c)
