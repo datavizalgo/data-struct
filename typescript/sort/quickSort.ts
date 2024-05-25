@@ -11,23 +11,23 @@ export function quickSort(arr: number[], low: number = 0, high: number = arr.len
 
 function partition(arr: number[], low: number, high: number) {
     let left = low
-        let right = high
-        const pivot = getMedianOfThree(arr, left, right)
-        swap(arr, low, pivot)
-        while (left < right) {
-            while (left < right && arr[right] >= arr[low]) {
-                right--
-            }
-            while (left < right && arr[left] <= arr[low]) {
-                left++
-            }
-            if (left < right) {
-                swap(arr, left, right)
-            }
+    let right = high
+    const pivot = getMedianOfThree(arr, left, right)
+    swap(arr, low, pivot)
+    while (left < right) {
+        while (left < right && arr[right] >= arr[low]) {
+            right--
         }
-        swap(arr, right, low)
+        while (left < right && arr[left] <= arr[low]) {
+            left++
+        }
+        if (left < right) {
+            swap(arr, left, right)
+        }
+    }
+    swap(arr, right, low)
 
-        return right
+    return right
 }
 
 // 三数取中间值法获取基准值
@@ -42,5 +42,44 @@ export function getMedianOfThree(arr: number[], low: number, high: number) {
         return low
     } else {
         return high
+    }
+}
+
+
+
+export function quickSort2(arr: number[], low: number = 0, high: number = arr.length - 1) {
+    if (low < high) {
+        let left = low
+        let right = high
+        const pivot = getMedianOfThree(arr, left, right)
+        swap(arr, low, pivot)
+        while (left < right) {
+            let rightFlag = false
+            let leftFlag = false
+            do {
+                if (left < right) {
+                    rightFlag = arr[right] <= arr[low]
+                    if (rightFlag) {
+                        right--
+                    }
+                }
+            } while (left < right && rightFlag)
+
+            do {
+                if (left < right) {
+                    leftFlag = arr[left] >= arr[low]
+                    if (leftFlag) {
+                        left++
+                    }
+                }
+            } while (left < right && leftFlag)
+
+            if (left < right) {
+                swap(arr, left, right)
+            }
+        }
+        swap(arr, right, low)
+        quickSort2(arr, low, right - 1)
+        quickSort2(arr, right + 1, high)
     }
 }

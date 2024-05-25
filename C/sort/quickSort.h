@@ -43,20 +43,13 @@ int getMedianOfThree(int arr[], int low, int high)
     int middle = (low + high) / 2;
     int b = arr[middle];
     int c = arr[high];
-    if (a <= b)
+    if (a <= b && b <= c || a >= b && b >= c)
     {
-        if (b <= c)
-            return middle;
-        if (a <= c)
-            return high;
-        return low;
-    }
-    else
-    {
-        if (a <= c)
-            return low;
-        if (b <= c)
-            return high;
         return middle;
     }
+    else if (b <= a && a <= c || b >= a && a >= c)
+    {
+        return low;
+    }
+    return high;
 }

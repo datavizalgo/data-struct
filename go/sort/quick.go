@@ -38,22 +38,10 @@ func getMedianOfThree(arr []int, low int, high int) int {
 	b := arr[middle]
 	c := arr[high]
 
-	if a <= b {
-
-		if b <= c {
-			return middle
-		} else if a <= c {
-			return high
-		} else {
-			return low
-		}
-	} else {
-		if a <= c {
-			return low
-		} else if b <= c {
-			return high
-		} else {
-			return middle
-		}
+	if a >= b && b >= c || a <= b && b <= c {
+		return middle
+	} else if b >= a && a >= c || b <= a && a <= c {
+		return low
 	}
+	return high
 }
