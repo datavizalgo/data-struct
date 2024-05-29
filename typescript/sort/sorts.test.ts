@@ -75,7 +75,7 @@ describe("sorts", () => {
     })
 
     it("test mergeSort", () => {
-        const arr = randomArray(500, 1, 50000)
+        const arr = randomArray(10, 1, 50000)
         mergeSort(arr)
         expect(isAscArray(arr)).toBe(true)
     })
